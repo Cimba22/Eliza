@@ -13,7 +13,7 @@ public class SimpleChatBot extends JFrame implements ActionListener{
     JTextArea dialogue; //area for dialog
     JCheckBox ai; // enable/disable AI
     JTextField message; //field for entering message
-    //SimpleBot sbot;
+    SimpleBot sbot;
 
     public static void main(String[] args) {
         new SimpleChatBot();
@@ -47,12 +47,15 @@ public class SimpleChatBot extends JFrame implements ActionListener{
         add(BorderLayout.SOUTH, buttonPanels);
 
         setVisible(true);
+        sbot = new SimpleBot(); //creating bot object
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
         if (message.getText().trim().length() > 0){
             dialogue.append(message.getText() + "\n");
+            dialogue.append(TITLE_OF_PROGRAM.substring(0, 9) +
+                    sbot.sayInReturn(message.getText(), ai.isSelected()) + "\n");
         }
         message.setText("");
         message.requestFocusInWindow();
