@@ -96,16 +96,16 @@ public class SimpleBot {
         String say = (msg.trim().endsWith("?"))?
                 ELUSIVE_ANSWERS[random.nextInt(ELUSIVE_ANSWERS.length)] :
                 COMMON_PHRASES[random.nextInt(COMMON_PHRASES.length)];
-        if (ai) {
-            String message = String.join(" ", msg.toLowerCase().split("[ {,|.}?]+"));
-            for (Map.Entry<String, String> o : PATTERNS_FOR_ANALYSIS.entrySet()) {
-                pattern = Pattern.compile(o.getKey());
-                if (pattern.matcher(message).find()){
-                    if (o.getValue().equals("whattime")) return date.toString();
-                    else return ANSWERS_BY_PATTERNS.get(o.getValue());
-                }
+
+        String message = String.join(" ", msg.toLowerCase().split("[ {,|.}?]+"));
+        for (Map.Entry<String, String> o : PATTERNS_FOR_ANALYSIS.entrySet()) {
+            pattern = Pattern.compile(o.getKey());
+            if (pattern.matcher(message).find()){
+                if (o.getValue().equals("whattime")) return date.toString();
+                else return ANSWERS_BY_PATTERNS.get(o.getValue());
             }
         }
+
         return say;
     }
 }

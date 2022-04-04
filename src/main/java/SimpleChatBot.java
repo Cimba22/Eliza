@@ -15,6 +15,7 @@ public class SimpleChatBot extends JFrame implements ActionListener{
     JTextField message; //field for entering message
     SimpleBot sbot;
 
+
     public static void main(String[] args) {
         new SimpleChatBot();
     }
@@ -29,6 +30,8 @@ public class SimpleChatBot extends JFrame implements ActionListener{
         dialogue.setLineWrap(true);
         JScrollPane scrollBar = new JScrollPane(dialogue);
 
+
+
         // panel for checkbox, message field and button
         JPanel buttonPanels = new JPanel();
         buttonPanels.setLayout(new BoxLayout(buttonPanels, BoxLayout.X_AXIS));
@@ -39,8 +42,13 @@ public class SimpleChatBot extends JFrame implements ActionListener{
         JButton enter = new JButton("Enter");
         enter.addActionListener(this);
 
+        dialogue.setBackground(new Color(230, 215, 161));
+        message.setBackground(new Color(148, 208, 247));
+
+
         //adding all elements to the window
-        buttonPanels.add(ai);
+        //buttonPanels.add(ai);
+        ai.isSelected();
         buttonPanels.add(message);
         buttonPanels.add(enter);
         add(BorderLayout.CENTER, scrollBar);
